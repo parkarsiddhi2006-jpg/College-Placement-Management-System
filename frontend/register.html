@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration | CPMS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="login-container">
+
+    <div class="login-left">
+
+        <span class="tag">NEW STUDENT</span>
+
+        <h1>Create Your Placement Profile.</h1>
+
+        <p>Register once and apply for jobs, internships and campus placements.</p>
+
+        <img src="https://storyset.imgix.net/illustrations/jobhunt.svg?auto=format" alt="Registration">
+
+    </div>
+
+    <div class="login-right">
+
+        <div class="login-card">
+
+            <h2>Student Registration</h2>
+
+            <form id="registerForm">
+
+                <input id="name" type="text" placeholder="Full Name" required>
+
+                <input id="email" type="email" placeholder="College Email" required>
+
+                <input id="branch" type="text" placeholder="Branch (EXTC, IT, CS)" required>
+
+                <input id="cgpa" type="number"
+                       placeholder="CGPA"
+                       min="0"
+                       max="10"
+                       step="0.1"
+                       required>
+
+                <input id="skills" type="text"
+                       placeholder="Skills (Java, Python, SQL)"
+                       required>
+
+                <button type="submit" class="primary-btn full-btn">
+                    Register
+                </button>
+
+            </form>
+
+            <p class="bottom-text">
+                Already have an account?
+                <a href="login.html">Login</a>
+            </p>
+
+            <button class="secondary-btn full-btn"
+                    onclick="window.location.href='index.html'">
+                Back to Home
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
