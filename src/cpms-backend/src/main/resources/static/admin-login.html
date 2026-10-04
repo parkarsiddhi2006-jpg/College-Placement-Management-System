@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <div class="login-left">
+
+        <span class="tag">ADMIN PORTAL</span>
+
+        <h1>Placement Cell Login</h1>
+
+        <p>Only Placement Cell Admins can access this portal.</p>
+
+        <img src="https://storyset.imgix.net/illustrations/business_plan.svg?auto=format" alt="Admin">
+
+    </div>
+
+    <div class="login-right">
+
+        <div class="login-card">
+
+            <h2>Admin Login</h2>
+
+            <form id="adminLoginForm">
+
+                <input
+                    type="text"
+                    id="adminUsername"
+                    placeholder="Admin Username"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="adminPassword"
+                    placeholder="Password"
+                    required
+                >
+
+                <button class="primary-btn full-btn" type="submit">
+                    Login
+                </button>
+
+            </form>
+
+            <button
+                class="secondary-btn full-btn"
+                onclick="window.location.href='index.html'">
+
+                Back to Home
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

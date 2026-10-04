@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Dashboard | CPMS</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+.job-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+    margin-bottom: 15px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+}
+
+.job-item h3 {
+    margin: 0 0 5px;
+}
+
+.job-item p {
+    margin: 0;
+    color: #777;
+}
+
+.job-item small {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+}
+
+.apply-btn {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.apply-btn:hover {
+    background: #4338ca;
+}
+
+.apply-btn.applied {
+    background: #16a34a;
+    cursor: default;
+}
+
+.application-section {
+    margin-top: 30px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+
+.application-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.status {
+    background: #fff7ed;
+    color: #ea580c;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="dashboard">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            🎓 CPMS
+        </div>
+
+        <nav>
+
+            <a class="active">🏠 Dashboard</a>
+
+            <a href="#jobs">💼 Jobs</a>
+
+            <a href="#applications">📄 Applications</a>
+
+            <a href="#profile">👤 Profile</a>
+
+        </nav>
+
+
+        <button
+            class="logout-btn"
+            onclick="logoutStudent()">
+
+            Logout
+
+        </button>
+
+    </aside>
+
+
+    <main class="dashboard-main">
+
+
+        <!-- TOP BAR -->
+
+        <div class="topbar">
+
+            <div>
+
+                <h1 id="welcomeText">
+                    Welcome Back 👋
+                </h1>
+
+                <p>
+                    Explore new placement opportunities today.
+                </p>
+
+            </div>
+
+
+            <div class="branch-badge">
+                EXTC
+            </div>
+
+        </div>
+
+
+        <!-- STATISTICS -->
+
+        <div class="stats">
+
+            <div class="stat-card blue">
+
+                <span>Jobs Available</span>
+
+                <h2>3</h2>
+
+            </div>
+
+
+            <div class="stat-card green">
+
+                <span>Applied</span>
+
+                <h2 id="appliedCount">0</h2>
+
+            </div>
+
+
+            <div class="stat-card purple">
+
+                <span>Shortlisted</span>
+
+                <h2>0</h2>
+
+            </div>
+
+        </div>
+
+
+        <!-- JOBS -->
+
+        <section
+            class="jobs-section"
+            id="jobs">
+
+            <h2>Latest Opportunities</h2>
+
+
+            <div class="job-item">
+
+                <div>
+
+                    <h3>TCS</h3>
+
+                    <p>
+                        Java Developer Intern
+                    </p>
+
+                    <small>
+                        Eligibility: CGPA 7.0+
+                    </small>
+
+                </div>
+
+
+                <button
+                    class="apply-btn"
+                    onclick="applyJob(this, 'TCS', 'Java Developer Intern')">
+
+                    Apply
+
+                </button>
+
+            </div>
+
+
+            <div class="job-item">
+
+                <div>
+
+                    <h3>Infosys</h3>
+
+                    <p>
+                        Cloud Intern
+                    </p>
+
+                    <small>
+                        Eligibility: CGPA 7.0+
+                    </small>
+
+                </div>
+
+
+                <button
+                    class="apply-btn"
+                    onclick="applyJob(this, 'Infosys', 'Cloud Intern')">
+
+                    Apply
+
+                </button>
+
+            </div>
+
+
+            <div class="job-item">
+
+                <div>
+
+                    <h3>Capgemini</h3>
+
+                    <p>
+                        Software Engineer
+                    </p>
+
+                    <small>
+                        Eligibility: CGPA 7.5+
+                    </small>
+
+                </div>
+
+
+                <button
+                    class="apply-btn"
+                    onclick="applyJob(this, 'Capgemini', 'Software Engineer')">
+
+                    Apply
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- APPLICATIONS -->
+
+        <section
+            class="application-section"
+            id="applications">
+
+            <h2>My Applications</h2>
+
+            <div id="applicationList">
+
+                <p>
+                    No applications submitted yet.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- UPDATES -->
+
+        <section
+            class="updates-section"
+            style="margin-top:30px;">
+
+            <h2>Placement Updates</h2>
+
+
+            <div class="update-card">
+                📢 Infosys registration closes tomorrow.
+            </div>
+
+
+            <div class="update-card">
+                🎯 TCS interview schedule released.
+            </div>
+
+
+            <div class="update-card">
+                💼 5 new companies added this week.
+            </div>
+
+        </section>
+
+
+        <!-- PROFILE -->
+
+        <section
+            class="application-section"
+            id="profile">
+
+            <h2>Student Profile</h2>
+
+            <p>
+                <strong>Email:</strong>
+                <span id="profileEmail">
+                    -
+                </span>
+            </p>
+
+            <p>
+                <strong>Branch:</strong>
+                Electronics & Telecommunication
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                Placement Eligible
+            </p>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<script>
+
+
+// ==========================================
+// GET CURRENT LOGGED-IN STUDENT
+// ==========================================
+
+const currentStudentEmail =
+    localStorage.getItem("currentStudentEmail");
+
+
+// If nobody is logged in, go back to login
+
+if (!currentStudentEmail) {
+
+    window.location.href = "login.html";
+
+}
+
+
+// Show email in profile
+
+document.getElementById("profileEmail").textContent =
+    currentStudentEmail;
+
+
+// ==========================================
+// WELCOME MESSAGE
+// ==========================================
+
+const students =
+    JSON.parse(
+        localStorage.getItem("cpmsStudents")
+    ) || [];
+
+
+const currentStudent =
+    students.find(function(student) {
+
+        return student.email === currentStudentEmail;
+
+    });
+
+
+if (currentStudent) {
+
+    document.getElementById("welcomeText").textContent =
+        "Welcome Back, " + currentStudent.name + " 👋";
+
+}
+
+
+// ==========================================
+// GET ALL APPLICATIONS
+// ==========================================
+
+let allApplications =
+    JSON.parse(
+        localStorage.getItem("cpmsApplications")
+    ) || [];
+
+
+// ==========================================
+// SHOW ONLY CURRENT STUDENT APPLICATIONS
+// ==========================================
+
+function getMyApplications() {
+
+    return allApplications.filter(function(app) {
+
+        return app.email === currentStudentEmail;
+
+    });
+
+}
+
+
+// ==========================================
+// APPLY FOR JOB
+// ==========================================
+
+function applyJob(button, company, position) {
+
+    const myApplications =
+        getMyApplications();
+
+
+    const alreadyApplied =
+        myApplications.some(function(app) {
+
+            return app.company === company &&
+                   app.position === position;
+
+        });
+
+
+    if (alreadyApplied) {
+
+        alert(
+            "You have already applied for this position."
+        );
+
+        return;
+
+    }
+
+
+    const application = {
+
+        email: currentStudentEmail,
+
+        company: company,
+
+        position: position,
+
+        status: "Applied"
+
+    };
+
+
+    allApplications.push(application);
+
+
+    localStorage.setItem(
+        "cpmsApplications",
+        JSON.stringify(allApplications)
+    );
+
+
+    button.textContent = "Applied";
+
+    button.classList.add("applied");
+
+    button.disabled = true;
+
+
+    updateApplications();
+
+
+    alert(
+        "Application submitted successfully! 🎉"
+    );
+
+}
+
+
+// ==========================================
+// DISPLAY MY APPLICATIONS
+// ==========================================
+
+function updateApplications() {
+
+    const list =
+        document.getElementById("applicationList");
+
+
+    const count =
+        document.getElementById("appliedCount");
+
+
+    const myApplications =
+        getMyApplications();
+
+
+    count.textContent =
+        myApplications.length;
+
+
+    list.innerHTML = "";
+
+
+    if (myApplications.length === 0) {
+
+        list.innerHTML =
+            "<p>No applications submitted yet.</p>";
+
+        return;
+
+    }
+
+
+    myApplications.forEach(function(app) {
+
+        const item =
+            document.createElement("div");
+
+
+        item.className =
+            "application-item";
+
+
+        item.innerHTML = `
+
+            <div>
+
+                <strong>
+                    ${app.company}
+                </strong>
+
+                <p>
+                    ${app.position}
+                </p>
+
+            </div>
+
+            <span class="status">
+                ${app.status}
+            </span>
+
+        `;
+
+
+        list.appendChild(item);
+
+    });
+
+}
+
+
+// ==========================================
+// RESTORE APPLIED BUTTONS
+// ==========================================
+
+function restoreAppliedButtons() {
+
+    const myApplications =
+        getMyApplications();
+
+
+    const buttons =
+        document.querySelectorAll(".apply-btn");
+
+
+    buttons.forEach(function(button) {
+
+        const onclickText =
+            button.getAttribute("onclick");
+
+
+        myApplications.forEach(function(app) {
+
+            if (
+                onclickText.includes(
+                    "'" + app.company + "'"
+                ) &&
+                onclickText.includes(
+                    "'" + app.position + "'"
+                )
+            ) {
+
+                button.textContent =
+                    "Applied";
+
+                button.classList.add(
+                    "applied"
+                );
+
+                button.disabled = true;
+
+            }
+
+        });
+
+    });
+
+}
+
+
+// ==========================================
+// LOGOUT
+// ==========================================
+
+function logoutStudent() {
+
+    localStorage.removeItem(
+        "currentStudentEmail"
+    );
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+// ==========================================
+// LOAD
+// ==========================================
+
+updateApplications();
+
+restoreAppliedButtons();
+
+</script>
+
+</body>
+</html>
